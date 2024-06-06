@@ -4,6 +4,9 @@ subtitle: "Fortgeschrittene Statistische Software für NF"
 author: "Name (Martrikelnummer), Name (Martrikelnummer), ..."
 date: "`r Sys.Date()`"
 output: distill::distill_article
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ## General Remarks
@@ -44,6 +47,17 @@ c)  For all of the following tasks in this exercise sheet we ask you to
 
 d)  Name 2 strengths and 2 weaknesses of git. (Don't forget to create a
     commit after this answer, see *1c*)
+
+    **Strenghts**:
+
+    -   History allows you to go back and understand changes or revert
+        when there are problems
+    -   Great for collaboration
+    
+    **Weaknesses**:
+    -   Struggles with binary (i.e. non-text (photos, etc.)) files
+    -   Struggles with large files, for example large datasets 
+
 e)  Knit this exercise sheet. Some new files will automatically be
     generated when knitting the sheet e.g. the HTML page. Ignore these
     files, as we only want to track the source files themselves.
