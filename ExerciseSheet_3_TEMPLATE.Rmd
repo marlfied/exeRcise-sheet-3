@@ -143,6 +143,22 @@ typeof(names22$Anzahl)
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2023. Which year had the bigger baby-boom?
+    
+```{r}
+#for 2022
+total_amount22 <- sum(names22$Anzahl)
+#for 2023
+total_amount23 <- sum(names23$Anzahl)
+
+amounts <- data.frame(year = c("2022", "2023"),
+                     total_amountt = c(total_amount22,total_amount23))
+```
+
+```{r, table1}
+amounts %>%
+  knitr::kable(caption = "Total amount of babies born in 2022 and 2023 in Munich")
+```
+There were more babies born in 2022, exactly `r total_count22-total_count23`
 
 d)  Add a new column `year` to both datasets which holds the correct
     year for each.
