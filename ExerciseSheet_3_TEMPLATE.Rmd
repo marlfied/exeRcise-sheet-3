@@ -95,6 +95,51 @@ b)  Load the data for both years into R. Check the type of the count
     not numeric? Fix the problem in an appropriate manner, it is OK if
     some of the counts are inaccurate because of this. Explain your
     solution and the repercussions.
+    
+```{r}
+library(tidyverse)
+```
+
+    
+```{r}
+names22 <- read.csv(file.path("data","open_data_portal_2022.csv"))
+names23 <- read.csv(file.path("data","vornamen-muenchen-2023.csv"))
+```
+
+Checking the type of "Anzahl":
+```{r}
+#for 2022
+typeof(names22$Anzahl)
+```
+```{r}
+#for 2023
+typeof(names23$Anzahl)
+```
+The type of "Anzahl" is character in both cases. This problem arises because of the entry "4 oder weniger" which can`t be interpreted as a numerical value.
+However it stand for 4,3,2,1 or 0, so we will replace it with a random integer between 0 and 4. (So we will just model it as random, considering this will give an equal solution for both data sets).
+However by this we are assuming that for names with four or less as a count 0,1,2,3,4 are equally distributed.
+
+
+```{r}
+#counting "4 oder weniger"
+a22 <- nrow(names22[names22$Anzahl=="4 oder weniger",])
+a23 <- nrow(names23[names23$Anzahl=="4 oder weniger",])
+
+#replacing "4 oder weniger" with random integer (-1 so we get 0,1,2,3 and 4)
+names22$Anzahl[names22$Anzahl=="4 oder weniger"] <- as.character(sample.int(5, a22, replace=TRUE)-1)
+
+names23$Anzahl[names23$Anzahl=="4 oder weniger"] <- as.character(sample.int(5,a23, replace=TRUE)-1)
+
+#changing the type to integer
+names22$Anzahl <- as.integer(names22$Anzahl)
+names23$Anzahl <- as.integer(names23$Anzahl)
+```
+
+```{r}
+#let`s check for 2022
+typeof(names22$Anzahl)
+```
+
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2023. Which year had the bigger baby-boom?
