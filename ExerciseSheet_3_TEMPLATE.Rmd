@@ -162,7 +162,21 @@ There were more babies born in 2022, exactly `r total_count22-total_count23`
 
 d)  Add a new column `year` to both datasets which holds the correct
     year for each.
+    
+```{r}
+#2022
+names22 <- names22 %>%
+  mutate(
+    year = 2022
+  )
 
+#2023
+names23 <- names23 %>%
+  mutate(
+    year = 2023
+  )
+```
+    
 e)  Combine both datasets into one using `bind_rows()`.
 
 f)  Combine the counts for same names to determine the most popular
